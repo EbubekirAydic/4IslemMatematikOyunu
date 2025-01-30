@@ -1,0 +1,361 @@
+/* Firefox için scroll bar */
+html {
+    scrollbar-width: thin; /* İnce yapar */
+    scrollbar-color: #888 #333; /* Kaydırma çubuğu ve yol rengi */
+  }
+  
+  body{
+    color: white;
+    font-size : 20px;
+    background-color: #190927;
+    text-align: center;
+    font-family: Monospace;
+  }
+  
+  h1{
+    text-shadow: 3px 3px 4px #000000;
+    font-size:45px;
+    color: #f5f5f5;
+  }
+  
+  #MegaHistoryBox{
+    scrollbar-width: thin; /* İnce yapar */
+    scrollbar-color: #888 #333; /* Kaydırma çubuğu ve yol rengi */
+    
+    position: fixed; /* Paragraf her zaman ekranda sabit kalır */
+    top: 50%; /* Dikeyde ekranın ortası */
+    left: 50%; /* Yatayda ekranın ortası */
+    transform: translate(-50%, -50%); /* Gerçek bir merkezleme */
+    
+    height: 80%;
+    background-color : white;
+    overflow: hidden;
+    background-color : #2a143d;
+    width: 90%;
+    border-radius: 25px;
+    border: 7px solid #4a0046;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .history-box{
+    transform: translate(3%, 0); /* Gerçek bir merkezleme */
+    
+    margin-top: 15px;
+    border-radius: 20px;
+    background-color: red;
+    font-family: Monospace;
+    width: 90%;
+    padding: 1px;
+    box-shadow: 0 10px 0px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    
+  }
+  
+  .true{
+    background-color: #3e6941 !important;
+  }
+
+  .false{
+    background-color: #a83232 !important;
+  }
+
+  #SoruGecmisiLi{
+    margin : 0 auto;
+    margin-top: 10px;
+    background-color: #4a0046;
+    padding: 10px 20px;
+    width: 300px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #SoruGecmisiLi1{
+    margin : 0 auto;
+    margin-top: 10px;
+    background-color: #4a0046;
+    padding: 15px 20px;
+    width: 320px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #SoruGecmisiUl{
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #SoruGecmisiSoru{
+    text-align: center;
+    background-color: #3e1166;
+    margin-right: 30px;
+    margin-left: 0;
+    flex: 1;
+  }
+
+  #SoruGecmisiSoru{
+    text-align: center;
+    background-color: #3e1166;
+    margin-right: 30px;
+    margin-left: 0;
+    flex: 1;
+  }
+
+  #SoruGecmisiCevap{
+    text-align: center;
+    background-color: #41693e;
+    margin-right: 10px;
+  }
+
+  #SoruGecmisiCevapPlus{
+    background-color: #41693e;
+  }
+
+  #SoruGecmisiCevap2{
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .radius{
+    border-radius: 10px;
+  }
+
+  .buton{
+    cursor: pointer;
+    font-family: Monospace;
+    padding : 10px;
+    background-color: #3e1166;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: background-color 0.2s, padding 0.2s, border-style 0.2s, border-width 0.2s, width 0.2s;
+    color: white;
+    border-style: solid;
+    border-width: 0px;
+    border: 0;
+    border-radius: 10px;
+  }
+  
+  .buton:hover{
+    padding : 11px;
+    background-color: #3e6941;
+    border-style: solid;
+    border-width: 1px;
+  }
+  
+  
+  #StartButton{
+    width: 200px;
+    border-radius: 10px;
+    font-size: 40px;
+  }
+  
+  #StartButton:hover{
+    width: 250px;
+    padding : 12px;
+    background-color: #3e6941;
+    border-style: solid;
+    border-width: 2px;
+  }
+  
+  #BackButton{
+    width: 350px;
+    border-radius: 10px;
+    font-size: 40px;
+  }
+  
+  #BackButton:hover{
+    width: 360px;
+    padding : 12px;
+    background-color: #3e6941;
+    border-style: solid;
+    border-width: 2px;
+  }
+  
+  #sure{
+        
+        position: fixed; /* Paragraf her zaman ekranda sabit kalır */
+        top: 50%; /* Dikeyde ekranın ortası */
+        left: 50%; /* Yatayda ekranın ortası */
+        transform: translate(-50%, -50%); /* Gerçek bir merkezleme */
+        margin:0;
+    
+        z-index: 9999; /* Diğer her şeyin üstünde */
+        color : #e6e3e3;
+        font-size: 400px; /* Yazı boyutu */
+      text-shadow: 10px 10px 10px #000000;
+  }
+  
+  #box {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    border-radius: 10px;
+  }
+  
+  #Game{
+    position: fixed; /* Paragraf her zaman ekranda sabit kalır */
+    top: 50%; /* Dikeyde ekranın ortası */
+    left: 50%; /* Yatayda ekranın ortası */
+    transform: translate(-50%, -50%); /* Gerçek bir merkezleme */
+    
+    border : solid;
+    height: 400px;
+    background-color : white;
+    
+    background-color : #2a143d;
+    width: 400px;
+    border-radius: 35px;
+  }
+  
+  #soruKutu {
+    position: fixed; /* Paragraf her zaman ekranda sabit kalır */
+    left: 50%; /* Yatayda ekranın ortası */
+    transform: translate(-50%, 0); /* Gerçek bir merkezleme */
+    
+    margin-top: 15px;
+    display: flex; /* Esnek düzen oluşturur */
+    justify-content: center; /* Yatayda ortala */
+    align-items: center; /* Öğeleri dikeyde hizalar */
+    
+    background-color : #2a143d;
+    width: 300px;
+    border-radius: 35px;
+    gap: 10px; /* Soru ve input arasında boşluk */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  #soru{
+    color : #e6e3e3;
+    margin : 20px;
+    font-size : 30px;
+  }
+  
+  #SoruInput{
+    border-radius: 10px;
+    background-color : #e6e3e3;
+    font-size : 40px;
+    width: 65px;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .close{
+     display: none;
+  }
+  
+  #Sure {
+    animation: flash 1s infinite;
+  }
+  
+  #soru {
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  @keyframes flash {
+    0%, 100% {
+      color: white;
+    }
+    50% {
+      color: red;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .selected{
+    background-color: blue !important;
+  }
+  
+  #ZorlukKutu{
+    background-color: red;
+  }
+  
+  /* Scroll bar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #333333; /* Koyu arka plan */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #666666; /* Koyu kaydırma çubuğu */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555555; /* Hover durumunda beyaz */
+  }
+  
+  /* Genel Ayarlar */
+  .radio-group {
+    display: flex; /* Esnek düzen oluşturur */
+    justify-content: center; /* Yatayda ortala */
+    align-items: center; /* Öğeleri dikeyde hizalar */
+    gap: 10px;
+  }
+  
+  .radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #e7e7e7;
+  }
+  
+  /* Input'u Gizle */
+  .radio-label input[type="radio"] {
+    display: none;
+  }
+  
+  /* Özelleştirilmiş Radio Buton */
+  .radio-label .custom-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* Seçili Durum için İç Nokta */
+  .radio-label input[type="radio"]:checked + .custom-radio {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .radio-label input[type="radio"]:checked + .custom-radio::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  
+  /* Hover ve Focus Efektleri */
+  .radio-label:hover .custom-radio {
+    border-color: #0056b3;
+  }
+  
+  .radio-label input[type="radio"]:focus + .custom-radio {
+    outline: 2px solid #80bdff;
+    outline-offset: 2px;
+  }
