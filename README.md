@@ -1,3 +1,7 @@
-theme: jekyll-theme-minimal
-title: Octocat's homepage
-description: Bookmark this to keep an eye on my project updates!
+echo "# MyRepository" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/EbubekirAydic/MyRepository.git
+git push -u origin main
