@@ -140,20 +140,6 @@ function getRndInteger(min, max) {
 
     let secimm;
 
-    Number1 = 0;
-    Number2 = 0;
-    cevap = 0;
-
-    console.log("-------------------------------------");
-    console.log(secim);
-    console.log(secilenIslemler);
-    console.log(secilenIslemlernew);
-    console.log(Number1);
-    console.log(Number2);
-    console.log(cevap);
-    console.log(secimm);
-    console.log(zorluk);
-    
     Soru = {};
   
     switch (secim) {
@@ -236,19 +222,6 @@ function getRndInteger(min, max) {
         secimmm = 3;
         break;
     }
-    
-    
-    console.log("-----==============================------");
-    console.log(secim);
-    console.log(secilenIslemler);
-    console.log(secilenIslemlernew);
-    console.log(Number1);
-    console.log(Number2);
-    console.log(cevap);
-    console.log(secimm);
-    console.log(zorluk);
-    console.log("-------------------------------------");
-
 
     Soru = {Number1:Number1, Number2:Number2, islem:secim, cevap:cevap, verilenCevap:"?", islempaun : secimmm};
     
@@ -317,7 +290,7 @@ function getRndInteger(min, max) {
 
     clearInterval(timerInterval);
     
-    if(dogruSayisi > yanlisSayisi){
+    if(((dogruSayisi - yanlisSayisi) + SoruPuanKatsayisi) > 0){
        
        PuanHesap(dogruSayisi,yanlisSayisi,zorlukKatsayisi,sure2);
       
@@ -406,7 +379,8 @@ function getRndInteger(min, max) {
       [
         `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf5'),'close')"><b>Puan Nasıl Hesaplanılıyor?</b></button>`,
         
-        `<div  class="close" id="paragraf5">
+        `<div class="close" id="paragraf5">
+
           <p><div class="kutu radius">((((<span class="Minikutu radius green">Doğru sayısı</span> - <span class="Minikutu radius red">Yanlış Sayısı</span>) + <span class="Minikutu radius Z2">4 İşlemlerin toplamı</span>) × <span class="Minikutu radius Z${zorlukKatsayisi}">Zorluk</span>) × 100) ÷ <span class="Minikutu radius Z6">süre</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
   
           <p><div class="kutu radius"> ((((<span class="Minikutu radius green">${dogruSayisi}</span> - <span class="Minikutu radius red">${yanlisSayisi}</span>) + <span class="Minikutu radius Z2">${SoruPuanKatsayisi}</span>) × <span class="Minikutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span>) × 100) ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
@@ -454,4 +428,3 @@ function getRndInteger(min, max) {
 
   //Yapılacaklar listesi
   //1. Soru geçmişine bak butonu
-  //2. soru zorluğunu ayarla
