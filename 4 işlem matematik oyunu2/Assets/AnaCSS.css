@@ -64,19 +64,24 @@ html {
     margin-top: 10px;
     background-color: #4a0046;
     padding: 10px 20px;
-    width: 300px;
+    width: 320px;
     font-size: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
+  .kutu{
+    background-color: #51346a;
+    padding: 5px 10px;
+  }
+
   #SoruGecmisiLi1{
     margin : 0 auto;
     margin-top: 10px;
     background-color: #4a0046;
-    padding: 15px 20px;
-    width: 320px;
+    padding: 10px 20px;
+    width: 340px;
     font-size: 20px;
     display: flex;
     flex-direction: row;

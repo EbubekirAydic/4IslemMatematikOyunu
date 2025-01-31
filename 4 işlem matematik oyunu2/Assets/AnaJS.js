@@ -148,11 +148,11 @@ function getRndInteger(min, max) {
           Number1 = getRndInteger(1, 10);
           Number2 = getRndInteger(1, 10);
         } else if (zorluk === "orta") {
-          Number1 = getRndInteger(1, 50);
-          Number2 = getRndInteger(1, 50);
+          Number1 = getRndInteger(10, 30);
+          Number2 = getRndInteger(10, 30);
         } else if (zorluk === "zor") {
-          Number1 = getRndInteger(1, 100);
-          Number2 = getRndInteger(1, 100);
+          Number1 = getRndInteger(30, 80);
+          Number2 = getRndInteger(30, 80);
         } // Zorluk seviyesine göre sayıları belirle
 
         cevap = Number1 + Number2;
@@ -160,6 +160,16 @@ function getRndInteger(min, max) {
         document.getElementById("soru").innerHTML = `${Number1} + ${Number2} = `;
         break;
       case "cikartma":
+        if (zorluk === "kolay") {
+          Number1 = getRndInteger(1, 10);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "orta") {
+          Number1 = getRndInteger(10, 30);
+          Number2 = getRndInteger(10, 30);
+        } else if (zorluk === "zor") {
+          Number1 = getRndInteger(30, 80);
+          Number2 = getRndInteger(30, 80);
+        } // Zorluk seviyesine göre sayıları belirle
         
         if (Number1 < Number2) [Number1, Number2] = [Number2, Number1];
         cevap = Number1 - Number2;
@@ -167,11 +177,33 @@ function getRndInteger(min, max) {
         document.getElementById("soru").innerHTML = `${Number1} - ${Number2} = `;
         break;
       case "carpma":
+        if (zorluk === "kolay") {
+          Number1 = getRndInteger(1, 10);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "orta") {
+          Number1 = getRndInteger(10, 20);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "zor") {
+          Number1 = getRndInteger(20, 30);
+          Number2 = getRndInteger(5, 15);
+        } // Zorluk seviyesine göre sayıları belirle
+
         cevap = Number1 * Number2;
         secimm = "carpma";
         document.getElementById("soru").innerHTML = `${Number1} × ${Number2} = `;
         break;
       case "bolme":
+        if (zorluk === "kolay") {
+          Number1 = getRndInteger(1, 10);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "orta") {
+          Number1 = getRndInteger(10, 20);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "zor") {
+          Number1 = getRndInteger(15, 30);
+          Number2 = getRndInteger(1, 15);
+        } // Zorluk seviyesine göre sayıları belirle
+        
         Number1 = Number1 * Number2; // Bölme tam sayı çıkması için tam sayıya çeviriyoruz.
         cevap = Number1 / Number2;
         secimm = "bolme";
@@ -292,15 +324,15 @@ function getRndInteger(min, max) {
     Paragraflar = [
       ["Oyun Bitti !!",
        
-       `Doğru sayısı: ${dogruSayisi} | Yanlış sayısı: ${yanlisSayisi}`,
+       `<span class="kutu radius">Doğru sayısı: <span class="kutu radius green">${dogruSayisi}</span> | Yanlış sayısı: <span class="kutu radius red">${yanlisSayisi}</span></span>`,
 
-       `4 İşlemlerin toplamı: ${SoruPuanKatsayisi}`,
+       `<span class="kutu radius">4 İşlemlerin toplamı: ${SoruPuanKatsayisi}</span>`,
        
-       `Zorluk: ${zorluk} | ZorlukPuanı: ${zorlukKatsayisi}`,
+       `<span class="kutu radius">Zorluk: <span class="kutu radius Z${zorlukKatsayisi}">${zorluk}</span> | ZorlukPuanı: <span class="kutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span></span>`,
        
-       `Süre : ${sure2}`,
+       `<span class="kutu radius">Süre : ${sure2}</span>`,
        
-       `<b>PUAN : ${puan}</b>`,
+       `<b class="kutu radius">PUAN : ${puan}</b>`,
        
        `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf4'),'close')" ><b>Zorluk Nasıl Hesaplanıyor?</b></button>`,
        
