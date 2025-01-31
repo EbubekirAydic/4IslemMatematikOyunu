@@ -93,6 +93,7 @@ function getRndInteger(min, max) {
   }
   
   function StartGame() {
+    let secilenIslemlernew = [...secilenIslemler]; //aynı işlemi tekrar yapmamak için
     dogruSayisi = 0;
     yanlisSayisi = 0;
     SoruPuanKatsayisi = 0;
@@ -115,28 +116,51 @@ function getRndInteger(min, max) {
       }
     }, 1000);
   
-    soru();
+    soru(secilenIslemlernew);
   }
   
-  function soru() {
+  function soru(secilenIslemlernew) {
 
     document.getElementById("SoruInput").value = "";
 
-    let secim = secilenIslemler[getRndInteger(0, secilenIslemler.length - 1)];
-    let maxRange = zorlukKatsayisi * 10;
+    // Eğer seçilen işlemler bitti ise tekrar başa dön
+    if (secilenIslemlernew.length === 0) {
+      secilenIslemlernew = secilenIslemler;
+    }
+
+    
+    let secim = secilenIslemlernew[getRndInteger(0, secilenIslemlernew.length - 1)];
+
+    for(let i = 0; i < secilenIslemlernew.length; i++){
+      if(secilenIslemlernew[i] === secim){
+        //sadece secilenIslemlernew içindeki işlemi çıkar
+        secilenIslemlernew.splice(i,1);
+      }
+    }
+
     let secimm;
-    Number1 = getRndInteger(1, maxRange);
-    Number2 = getRndInteger(1, maxRange);
     
     Soru = {};
   
     switch (secim) {
       case "toplama":
+        if (zorluk === "kolay") {
+          Number1 = getRndInteger(1, 10);
+          Number2 = getRndInteger(1, 10);
+        } else if (zorluk === "orta") {
+          Number1 = getRndInteger(1, 50);
+          Number2 = getRndInteger(1, 50);
+        } else if (zorluk === "zor") {
+          Number1 = getRndInteger(1, 100);
+          Number2 = getRndInteger(1, 100);
+        } // Zorluk seviyesine göre sayıları belirle
+
         cevap = Number1 + Number2;
         secimm = "toplama";
         document.getElementById("soru").innerHTML = `${Number1} + ${Number2} = `;
         break;
       case "cikartma":
+        
         if (Number1 < Number2) [Number1, Number2] = [Number2, Number1];
         cevap = Number1 - Number2;
         secimm = "cikartma";
@@ -181,7 +205,7 @@ function getRndInteger(min, max) {
       handleKeyDown = function (event) {
           if (event.key === "Enter" && beklemek) {
               beklemek = false;
-              Cevaplamak(input, cevap, secimm); // Doğru işlemi gönderiyoruz.
+              Cevaplamak(input, cevap, secimm,secilenIslemlernew); // Doğru işlemi gönderiyoruz.
           }
       };
 
@@ -189,11 +213,12 @@ function getRndInteger(min, max) {
     }
   }
   
-  function Cevaplamak(input, cevap,secim) {
+  function Cevaplamak(input, cevap,secim,secilenIslemlernew) {
     let value = parseFloat(input.value);
     
-    if(input.value === ""){
-      alert("Lütfen bir sayı girin!")
+    if (input.value.trim() === "" || isNaN(value)) {
+      alert("Lütfen geçerli bir sayı girin!");
+      return;
     }else if (value === cevap) {
       
       dogruSayisi++;
@@ -211,8 +236,6 @@ function getRndInteger(min, max) {
           SoruPuanKatsayisi += 3;
           break;
       }
-
-      console.log("Sorukatsayisi : " + SoruPuanKatsayisi);
       
     } else {
       
@@ -227,7 +250,7 @@ function getRndInteger(min, max) {
     
     setTimeout(function () {
       beklemek = true;
-      soru();
+      soru(secilenIslemlernew);
     }, 100);
   }
   
@@ -304,7 +327,7 @@ function getRndInteger(min, max) {
 
           <p> (${(dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi} × 100) ÷ ${sure2} = <b>PUAN</b></p>
   
-          <p> ${((dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi * 100)} ÷ ${sure2} = ${puan} : <b>PUAN</b></p> </div>`
+          <p> ${((dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi * 100)} ÷ ${sure2} = <b>${puan} : PUAN</b></p> </div>`
       ],
       [
         `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf7'),'close')"><b>Soru geçmişine bak</b></button>`
@@ -364,8 +387,10 @@ function getRndInteger(min, max) {
   }
   
   function PuanHesap(Dogru,Yanlis,zorluk,sure) {
-
-    console.log(SoruPuanKatsayisi);
-
     puan = (Dogru - Yanlis) * SoruPuanKatsayisi * zorluk * 100 / sure;
+    puan = Math.round(puan);
   }
+
+  //Yapılacaklar listesi
+  //1. Soru geçmişine bak butonu
+  //2. soru zorluğunu ayarla
