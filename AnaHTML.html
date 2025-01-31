@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="Assets/AnaCSS.css">
+    
+    <script src="Assets/AnaJS.js"></script>
+
+</head>
+<body>
+
+<div id="menu" class="Menus">
+  <h1 id="baslik"> 4 İşlem Matematik Oyunu</h1>
+  <button id="StartButton" class="buton" onclick="GoToFunction('ayarMenu')"><b>OYNA</b></button>
+  
+  <br><br>
+  
+  <button id="HistoryButton" class="buton" onclick="GoToFunction('MegaHistoryBox')"><b>Geçmiş Oyunlar</b></button>
+     
+</div>
+  
+<div id="MegaHistoryBox" class="close Menus">
+    <div style="
+                height: 25px;
+                position: sticky;
+                background-color: black;
+                margin : 0;
+                transform: translate(0%, 0);
+                width: 100%;
+                box-shadow: 0 0px 0px;
+                border-radius: 0;
+                z-index: 9999;
+                padding: 1px;
+                " class="history-box">
+     
+     <button onclick="GoToFunction('menu')" style="
+                    float: right;
+                    cursor: pointer;
+                    background-color: #333333;
+                    border:0;
+                    border-radius: 3px;
+                    font-size: 20px;
+                    ">×</button>
+       
+    </div>
+  
+    <div id="history-box" style="line-height: 0.3;" class="history-box">
+     
+           <p style="font-size:30px;"><b>PUAN : 120</b></p>
+    <button onclick="" class="buton">Ayrıntılar</button>
+       
+    </div>
+    <div id="history-box" class="history-box">
+     
+     <p>Doğru sayısı: 10 | Yanlış sayısı: 23</p>
+     
+     <p>Zorluk: zor | ZorlukSayısı: 1</p>
+       
+    </div>
+    <div id="history-box" class="history-box">
+     
+     <p>Doğru sayısı: 6 | Yanlış sayısı: 3</p>
+     
+     <p>Zorluk: zor | ZorlukSayısı: 3</p>
+       
+    </div>
+    <div id="history-box" class="history-box">
+     
+     <p>Doğru sayısı: 6 | Yanlış sayısı: 3</p>
+     
+     <p>Zorluk: zor | ZorlukSayısı: 3</p>
+       
+    </div>
+    <div id="history-box" class="history-box">
+     
+     <p>Doğru sayısı: 6 | Yanlış sayısı: 3</p>
+     
+     <p>Zorluk: zor | ZorlukSayısı: 3</p>
+       
+    </div>
+    <div id="history-box" class="history-box">
+     
+     <p>Doğru sayısı: 6 | Yanlış sayısı: 3</p>
+     
+     <p>Zorluk: zor | ZorlukSayısı: 3</p>
+       
+    </div>
+  
+    </div>
+  
+<div id="ayarMenu" class="close Menus">
+  <h2>Oyun Ayarları</h2>
+  <label for="sureInput">Süre (5-120 saniye):</label>
+  <input type="number" id="sureInput" class="Kutu" min="5" max="120" value="60">
+  
+  <h3>İşlemler:</h3>
+  <button id="toplama" class="islemButton buton" onclick="ToggleOperation(this,'selected')">Toplama</button>
+  <button id="cikartma" class="islemButton buton"onclick="ToggleOperation(this,'selected')">Çıkartma</button>
+  <button id="carpma" class="islemButton buton" onclick="ToggleOperation(this,'selected')">Çarpma</button>
+  <button id="bolme" class="islemButton buton" onclick="ToggleOperation(this,'selected')">Bölme</button>
+  
+  
+  <h3>Zorluk:</h3>
+  
+  <div class="radio-group">
+  <label class="radio-label">
+    <input type="radio" name="zorluk" value="kolay">
+    <span class="custom-radio"></span> kolay
+  </label>
+  <label class="radio-label">
+    <input type="radio" name="zorluk" value="orta">
+    <span class="custom-radio"></span> orta
+  </label>
+  <label class="radio-label">
+    <input type="radio" name="zorluk" value="zor">
+    <span class="custom-radio"></span> zor
+  </label>
+</div>
+
+  <br><br>
+  <button class="buton" onclick="ApplySettings()">Başlat</button>
+</div>
+
+<div id="Game" class="close Menus">
+  <p id="soru"></p>
+  <input id="SoruInput" type="text">
+  <p id="Sure"></p>
+  <p id="dogruSayisi"></p>
+  <p id="yanlisSayisi"></p>
+  <p id="puan">Puan: 0</p>
+  <button id="StartButton" class="buton" onclick="EndGame()"><b>TERK ET</b></button>
+
+</div>
+
+<div id="Sonuc" class="close Menus">
+
+</div>
+  
+</body>
+</html>
