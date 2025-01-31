@@ -1,7 +1,4 @@
-echo "# MyRepository" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/EbubekirAydic/MyRepository.git
-git push -u origin main
+Original file line number	Diff line number	Diff line change
+@@ -1,2 +0,0 @@
+# MyDepository
+Bu depomda kendime ait yaptığım tüm projeleri paylaşacağım. (html,css,js,c#) paylaşacağım.
