@@ -50,7 +50,7 @@ function getRndInteger(min, max) {
     sure2 = sure
   
     if (isNaN(sure) || sure < 5 || sure > 120) {
-      alert("Süre 5 ile 120 saniye arasında olmalıdır.");
+      innerHTML('Uyar',"Süre 5 ile 120 saniye arasında olmalıdır.");
       return;
     }
   
@@ -74,7 +74,7 @@ function getRndInteger(min, max) {
     });
   
     if (secilenIslemler.length === 0) {
-      alert("En az bir işlem seçmelisiniz.");
+      innerHTML('Uyar',"En az bir işlem seçmelisiniz.");
       return;
     }
   
@@ -324,11 +324,11 @@ function getRndInteger(min, max) {
     Paragraflar = [
       ["Oyun Bitti !!",
        
-       `<span class="kutu radius">Doğru sayısı: <span class="kutu radius green">${dogruSayisi}</span> | Yanlış sayısı: <span class="kutu radius red">${yanlisSayisi}</span></span>`,
+       `<span class="kutu radius">Doğru sayısı: <span class="Minikutu radius green"><b>${dogruSayisi}</b></span> | Yanlış sayısı: <span class="Minikutu radius red"><b>${yanlisSayisi}</b></span></span>`,
 
        `<span class="kutu radius">4 İşlemlerin toplamı: ${SoruPuanKatsayisi}</span>`,
        
-       `<span class="kutu radius">Zorluk: <span class="kutu radius Z${zorlukKatsayisi}">${zorluk}</span> | ZorlukPuanı: <span class="kutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span></span>`,
+       `<span class="kutu radius">Zorluk: <span class="Minikutu radius Z${zorlukKatsayisi}">${zorluk}</span> | ZorlukPuanı: <span class="Minikutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span></span>`,
        
        `<span class="kutu radius">Süre : ${sure2}</span>`,
        
@@ -336,30 +336,30 @@ function getRndInteger(min, max) {
        
        `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf4'),'close')" ><b>Zorluk Nasıl Hesaplanıyor?</b></button>`,
        
-       `<p class="close" id="paragraf4">Zorluk kolaysa = 1 | Zorluk ortaysa = 3 | Zorluk zorsa = 5</p>`
+       `<span class="kutu radius close" id="paragraf4">Zorluk kolaysa = <span class="Minikutu radius Z1">1</span> | Zorluk ortaysa = <span class="Minikutu radius Z3">3</span> | Zorluk zorsa = <span class="Minikutu radius Z5">5</span></span>`
       ],
       [
         `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf8'),'close')"><b>4 İşlemlerin toplamı nasıl hesaplanır?</b></button>
         <div class="close" id="paragraf8">
-        <p>Her çözdüğün soruya göre verilen puan :</p>
-        <p>toplama(+) ve çıkartma(-) çözdüysen = 1 | çarpma(×) ve bölme(÷) çözdüysen = 3</p>
+        <p><span class="kutu radius">Her çözdüğün soruya göre verilen puan :</span></p>
+        <p><span class="kutu radius">toplama(+) ve çıkartma(-) çözdüysen = <b>1</b> | çarpma(×) ve bölme(÷) çözdüysen = <b>3</b></span></p>
         </div>`
       ],
       [
         `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf5'),'close')"><b>Puan Nasıl Hesaplanılıyor?</b></button>`,
         
         `<div  class="close" id="paragraf5">
-          <p> ((((Doğru sayısı - Yanlış Sayısı) × 4 İşlemlerin toplamı) × Zorluk) × 100) ÷ süre = <b>PUAN</b></p>
+          <p><div class="kutu radius">((((<span class="Minikutu radius green">Doğru sayısı</span> - <span class="Minikutu radius red">Yanlış Sayısı</span>) × <span class="Minikutu radius Z2">4 İşlemlerin toplamı</span>) × <span class="Minikutu radius Z${zorlukKatsayisi}">Zorluk</span>) × 100) ÷ <span class="Minikutu radius Z6">süre</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
   
-          <p> ((((${dogruSayisi} - ${yanlisSayisi}) × ${SoruPuanKatsayisi}) × ${zorlukKatsayisi}) × 100) ÷ ${sure2} = <b>PUAN</b></p>
+          <p><div class="kutu radius"> ((((<span class="Minikutu radius green">${dogruSayisi}</span> - <span class="Minikutu radius red">${yanlisSayisi}</span>) × <span class="Minikutu radius Z2">${SoruPuanKatsayisi}</span>) × <span class="Minikutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span>) × 100) ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
   
-          <p> (((${dogruSayisi - yanlisSayisi} × ${SoruPuanKatsayisi}) × ${zorlukKatsayisi}) × 100) ÷ ${sure2} = <b>PUAN</b></p>
+          <p><div class="kutu radius"> (((<span class="Minikutu radius Z4">${dogruSayisi - yanlisSayisi}</span> × <span class="Minikutu radius Z2">${SoruPuanKatsayisi}</span>) × <span class="Minikutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span>) × 100) ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
   
-          <p> ((${(dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi} × ${zorlukKatsayisi}) × 100) ÷ ${sure2} = <b>PUAN</b></p>
+          <p><div class="kutu radius"> ((<span class="Minikutu radius Z4">${(dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi}</span> × <span class="Minikutu radius Z${zorlukKatsayisi}">${zorlukKatsayisi}</span>) × 100) ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
 
-          <p> (${(dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi} × 100) ÷ ${sure2} = <b>PUAN</b></p>
+          <p><div class="kutu radius"> (<span class="Minikutu radius Z4">${(dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi}</span> × 100) ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">PUAN</b></div></p>
   
-          <p> ${((dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi * 100)} ÷ ${sure2} = <b>${puan} : PUAN</b></p> </div>`
+          <p><div class="kutu radius"> <span class="Minikutu radius Z4">${((dogruSayisi - yanlisSayisi) * SoruPuanKatsayisi * zorlukKatsayisi * 100)}</span> ÷ <span class="Minikutu radius Z6">${sure2}</span> = <b class="Minikutu radius Z0">${puan} : PUAN</b></div></p></div>`
       ],
       [
         `<button class="buton" onclick="ToggleOperation(document.getElementById('paragraf7'),'close')"><b>Soru geçmişine bak</b></button>`

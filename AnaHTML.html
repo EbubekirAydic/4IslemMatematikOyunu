@@ -91,7 +91,7 @@
 <div id="ayarMenu" class="close Menus">
   <h2>Oyun Ayarları</h2>
   <label for="sureInput">Süre (5-120 saniye):</label>
-  <input type="number" id="sureInput" class="Kutu" min="5" max="120" value="60">
+  <input class="buton" type="number" id="sureInput" class="Kutu" min="5" max="120" value="30">
   
   <h3>İşlemler:</h3>
   <button id="toplama" class="islemButton buton" onclick="ToggleOperation(this,'selected')">Toplama</button>
@@ -119,7 +119,9 @@
 
   <br><br>
   <button class="buton" onclick="ApplySettings()">Başlat</button>
+  <p id="Uyar"></p>
 </div>
+
 
 <div id="Game" class="close Menus">
   <p id="soru"></p>

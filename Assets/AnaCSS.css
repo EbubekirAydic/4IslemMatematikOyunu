@@ -70,10 +70,16 @@ html {
     flex-direction: row;
     justify-content: space-between;
   }
-
   .kutu{
+    border-radius: 15px;
+    margin: auto;
+    max-width: 90%;
     background-color: #51346a;
     padding: 5px 10px;
+  }
+  .Minikutu{
+    background-color: #51346a;
+    padding: 2px 6px;
   }
 
   #SoruGecmisiLi1{
@@ -246,7 +252,32 @@ html {
   }
   
   .red {
-    background-color: red;
+    background-color: #a83232 !important;
+  }
+  .green {
+    background-color: #3e6941 !important;
+  }
+
+  .Z0{
+    background-color: #a700ad !important;
+  }
+  .Z1{
+    background-color: #137519 !important;
+  }
+  .Z2{
+    background-color: #0b96a8 !important;
+  }
+  .Z3{
+    background-color: #a9b712 !important;
+  }
+  .Z4{
+    background-color: #0b28a8 !important;
+  }
+  .Z5{
+    background-color: #b31616 !important;
+  }
+  .Z6{
+    background-color: #8f929d !important;
   }
   
   .close{
