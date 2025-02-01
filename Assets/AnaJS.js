@@ -40,6 +40,12 @@
   //Geçmiş değişkenleri
   let AllHistory = []; //Tüm geçmişi tutar
   let Historyy = {}; //Tek bir geçmişi tutar
+
+
+  //Tüm geçmişi al
+  if (localStorage.getItem("AllHistory")) {
+    AllHistory = localStorage.getItem("AllHistory");
+  }
   
 //Tanımlanması gereken fonksiyonlar
 
@@ -54,32 +60,34 @@ function innerHTML(girdi, girilen) {
 }
 
 function resetle(){
-  localStorage.setItem("AllHistory", []);
-  AllHistory = [];
-}
+  //Oyunu sıfırlamadan önce emin misiniz? sorusu sor ve 3 saniye sonra eminim butonuna basarsa sıfırla
+  //emin değilse sıfırlama
+  
+  //1 soru paragrafı yaz soruda şu yazsın : Tüm geçmişinizi silmek istediğinize emin misiniz? 2 buton ekle 1.si evet 2.si hayır 3 saniye boyunca evet butonu kitli basılamaz bir şekilde. 3 saniye sonra evet butonuna basılırsa tüm geçmişi sil.
 
-if (localStorage.getItem("AllHistory")) {
-  console.log("Geçmişinizde oyun var");
-  console.log(localStorage.getItem("AllHistory"));
-  AllHistory = localStorage.getItem("AllHistory");
-  console.log(AllHistory);
-}else{
-  console.log("Geçmişinizde oyun yok");
-  localStorage.setItem("AllHistory", AllHistory);
+  ToggleOperation(document.getElementById("Eminmisin"), "close");
 
+  innerHTML("SoruE", "Tüm geçmişinizi silmek istediğinize emin misiniz?");
+
+  document.getElementById("SoruButon").onclick = function(){
+    localStorage.removeItem("AllHistory");
+    AllHistory = [];
+    innerHTML("SoruE", "Tüm geçmişiniz silindi");
+  };
 }
 
 //Menüye gitme fonksiyonu
 function GoToFunction(Open){
+
   
   setTimeout(function () {
     const elements = document.getElementsByClassName("Menus");
 
     // Döngüyle elemanlara erişme
     for (let i = 0; i < elements.length; i++) {
+      console.log(document.getElementById(elements));
       elements[i].classList.add("close");
     }
-
     document.getElementById(Open).classList.remove("close");
   }, 100);
   
@@ -353,7 +361,6 @@ function EndGame() {
   GoToFunction("Sonuc");
   
   document.getElementById("Sonuc").innerHTML = "";
-
   
   for (let i = 0; i < Sorular.length; i++) {
     Soru = Sorular[i];
@@ -463,7 +470,6 @@ function EndGame() {
     }
     
 }
-
   HistoryFunction();
   
 }
@@ -471,14 +477,8 @@ function EndGame() {
 function HistoryFunction(){
   
   Historyy = {dogruSayisi:dogruSayisi,yanlisSayisi:yanlisSayisi,SoruPuanKatsayisi:SoruPuanKatsayisi,zorluk:zorluk,zorlukKatsayisi:zorlukKatsayisi,sure:sure2,puan:puan,Sorular:Sorular,OyunTamSurumu:OyunTamSurumu};
-  
-  console.log("1 : "+AllHistory);
-  console.log("2 : "+Historyy);
 
   AllHistory.push(Historyy);
-
-  console.log("3 : "+Historyy);
-  console.log("4 : "+AllHistory);
 
   //bunu kaydetmek için bir fonksiyon yazılacak
   localStorage.setItem("AllHistory", AllHistory);
@@ -501,7 +501,8 @@ function HistoryUploudFunction(){
 
     console.log(AllHistory);
 
-  if(!AllHistory == []){
+    // AllHistory boş mu değil mi kontrolü
+  if(AllHistory.length === 0){
 
     console.log("Geçmişinizde hiç oyun yok");
 
@@ -509,19 +510,16 @@ function HistoryUploudFunction(){
 
   }else{
     console.log("Geçmişinizde oyun var");
-    console.log(localStorage.getItem("AllHistory") + "=" + null);
-
-    console.log(AllHistory2);
-    console.log(AllHistory);
 
   for (let i = 0; i < AllHistory.length; i++) {
-    console.log("AAAAAAAAAAAAAAAA");
 
     if (AllHistory.length !== 0) {
 
       console.log(AllHistory.length);
 
   Historyy = AllHistory[i];
+
+
   paragraflar2 = [
     `<div id="history-box" style="line-height: 0.3;" class="history-box">
      
@@ -557,7 +555,7 @@ function HistoryUploudFunction(){
               <br>
               <p class="history-boxP">Yanlış sayısı: <span class="history-boxS Z5">${Historyy.yanlisSayisi}</span></p>
               <br>
-              <p class="history-boxP">Zorluk: <span class="history-boxS Z5">${Historyy.zorluk}</span></p>
+              <p class="history-boxP">Zorluk: <span class="history-boxS Z${Historyy.zorlukKatsayisi}">${Historyy.zorluk}</span></p>
               <br>
               <p class="history-boxP">Süre: <span class="history-boxS Z6">${Historyy.sure}</span></p></div>
           </div>
