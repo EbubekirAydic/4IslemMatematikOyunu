@@ -490,7 +490,7 @@ function HistoryUploudFunction(){
     <div id="Xbutton" class="history-box">
      
      <button id="XButton" onclick="GoToFunction('menu')">×</button>
-    
+    </div>
     <div id="history-box" style="line-height: 0.3;" class="history-box">
      
           <p class="history-boxP" style="font-size:30px;"><b>PUAN : 102</b></p>
