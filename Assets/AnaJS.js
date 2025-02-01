@@ -39,7 +39,7 @@
 
   //Geçmiş değişkenleri
   let AllHistory = []; //Tüm geçmişi tutar
-  let History = {}; //Tek bir geçmişi tutar
+  let Historyy = {}; //Tek bir geçmişi tutar
   
 //Tanımlanması gereken fonksiyonlar
 
@@ -454,15 +454,18 @@ function EndGame() {
 
 function HistoryFunction(){
   
-  History = {dogruSayisi:dogruSayisi,yanlisSayisi:yanlisSayisi,SoruPuanKatsayisi:SoruPuanKatsayisi,zorluk:zorluk,zorlukKatsayisi:zorlukKatsayisi,sure:sure2,puan:puan,Sorular:Sorular,OyunTamSurumu:OyunTamSurumu};
+  Historyy = {dogruSayisi:dogruSayisi,yanlisSayisi:yanlisSayisi,SoruPuanKatsayisi:SoruPuanKatsayisi,zorluk:zorluk,zorlukKatsayisi:zorlukKatsayisi,sure:sure2,puan:puan,Sorular:Sorular,OyunTamSurumu:OyunTamSurumu};
   
-  AllHistory.push(History);
+  console.log(AllHistory);
+  console.log(Historyy);
 
-  console.log(History);
+  AllHistory.push(Historyy);
+
+  console.log(Historyy);
   console.log(AllHistory);
 
   //bunu kaydetmek için bir fonksiyon yazılacak
-  localStorage.setItem("AllHistory", JSON.stringify(AllHistory));
+  localStorage.setItem("AllHistory", AllHistory);
   
 }
 
@@ -475,28 +478,44 @@ function HistoryUploudFunction(){
 
   GoToFunction('MegaHistoryBox');
 
-  let AllHistory2 = JSON.parse(localStorage.getItem("AllHistory"));
-  
-  console.log(AllHistory2);
-
-  if(AllHistory2 !== null){
-    console.log(AllHistory);
-    AllHistory = AllHistory2;
-  }
-
-  paragraflar2 = [];
+  console.log(localStorage.getItem("AllHistory"));
 
   innerHTML("MegaHistoryBox", `
     <div id="Xbutton" class="history-box">
+    <button id="XButton" onclick="GoToFunction('menu')">×</button>
+    </div>`);
+
+  if(localStorage.getItem("AllHistory")){
+
+    console.log("Geçmişinizde hiç oyun yok");
+
+    innerHTML("MegaHistoryBox", document.getElementById("MegaHistoryBox").innerHTML + "<p style='color : rgba(255, 255, 255, 0.42)'>Geçmişinizde hiç oyun yok</p>");
+
+  }else{
+    console.log("Geçmişinizde oyun var");
+    console.log(localStorage.getItem("AllHistory") + "=" + null);
+
+    let AllHistory2 = localStorage.getItem("AllHistory");
+    AllHistory = AllHistory2;
+    console.log(AllHistory2);
+    console.log(AllHistory);
+  }
+
+  for (let i = 0; i < AllHistory.length; i++) {
+    console.log("AAAAAAAAAAAAAAAA");
+
+    if (AllHistory.length !== 0) {
+
+      console.log(AllHistory.length);
+
+  Historyy = AllHistory[i];
+  paragraflar2 = [
+    `<div id="history-box" style="line-height: 0.3;" class="history-box">
      
-     <button id="XButton" onclick="GoToFunction('menu')">×</button>
-    </div>
-    <div id="history-box" style="line-height: 0.3;" class="history-box">
-     
-          <p class="history-boxP" style="font-size:30px;"><b>PUAN : 102</b></p>
+          <p class="history-boxP" style="font-size:30px;"><b>PUAN : ${Historyy.puan}</b></p>
           <br>
-          <button onclick="ToggleOperation(document.getElementById('Ayrintilar'),'close')" class="buton butons">Ayrıntılar</button>
-          <div id="Ayrintilar" class="Ayrintilar close" style="background-color: #00000000;">
+          <button onclick="ToggleOperation(document.getElementById('Ayrintilar${i}'),'close')" class="buton butons">Ayrıntılar</button>
+          <div id="Ayrintilar${i}" class="Ayrintilar close" style="background-color: #00000000;">
             <div class="AyrintilarMini radius" style="background-color: #2f0038; padding: 10px;">
               
           <p class="history-boxP" style="background-color: #6f0358; font-size: 30px;"><b>Soru geçmişi</b></p>
@@ -507,27 +526,35 @@ function HistoryUploudFunction(){
               <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="radius">Cevabın</div></span>
               <div id="SoruGecmisiCevapPlus" class="radius"><span id="SoruGecmisiCevap2" class="radius">Ekstra</div></span>
               </li>
-              <li id="SoruGecmisiLi" class="radius">
-              <div id="SoruGecmisiSoru" class="radius">10 + 5 = 15</div>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="true radius">15</div></span>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="false radius">+0</div></span>
+              ${Historyy.Sorular.map(
+              (soru) => 
+              `<li id="SoruGecmisiLi" class="radius">
+              <div id="SoruGecmisiSoru" class="radius">${soru.Number1} ${soru.islem} ${soru.Number2} = ${soru.cevap}</div>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap}</div></span>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap === soru.cevap ? "+" + soru.islempaun : "+0"}</div></span>
 
-              </li>
+              </li>`
+          ).join("")}
           </ul>
             </div>
             <div class="AyrintilarMini radius" style="background-color: #156545;">
               <p class="history-boxP" style="background-color: #015e1a; font-size: 30px;"><b>Puanlar</b></p>
               <br>
-              <p class="history-boxP">Doğru sayısı: <span class="history-boxS Z1">10</span></p>
+              <p class="history-boxP">Doğru sayısı: <span class="history-boxS Z1">${Historyy.dogruSayisi}</span></p>
               <br>
-              <p class="history-boxP">Yanlış sayısı: <span class="history-boxS Z5">23</span></p>
+              <p class="history-boxP">Yanlış sayısı: <span class="history-boxS Z5">${Historyy.yanlisSayisi}</span></p>
               <br>
-              <p class="history-boxP">Zorluk: <span class="history-boxS Z5">zor</span></p>
+              <p class="history-boxP">Zorluk: <span class="history-boxS Z5">${Historyy.zorluk}</span></p>
               <br>
-              <p class="history-boxP">Süre: <span class="history-boxS Z6">100</span></p></div>
+              <p class="history-boxP">Süre: <span class="history-boxS Z6">${Historyy.sure}</span></p></div>
           </div>
-    </div>`);
+    </div>`
 
+  ];
+
+    innerHTML("MegaHistoryBox", document.getElementById("MegaHistoryBox").innerHTML + paragraflar2);
+    }
+  }
 }
 
 
