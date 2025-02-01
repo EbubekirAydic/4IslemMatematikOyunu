@@ -53,6 +53,22 @@ function innerHTML(girdi, girilen) {
   document.getElementById(girdi).innerHTML = girilen;
 }
 
+function resetle(){
+  localStorage.setItem("AllHistory", []);
+  AllHistory = [];
+}
+
+if (localStorage.getItem("AllHistory")) {
+  console.log("Geçmişinizde oyun var");
+  console.log(localStorage.getItem("AllHistory"));
+  AllHistory = localStorage.getItem("AllHistory");
+  console.log(AllHistory);
+}else{
+  console.log("Geçmişinizde oyun yok");
+  localStorage.setItem("AllHistory", AllHistory);
+
+}
+
 //Menüye gitme fonksiyonu
 function GoToFunction(Open){
   
@@ -456,13 +472,13 @@ function HistoryFunction(){
   
   Historyy = {dogruSayisi:dogruSayisi,yanlisSayisi:yanlisSayisi,SoruPuanKatsayisi:SoruPuanKatsayisi,zorluk:zorluk,zorlukKatsayisi:zorlukKatsayisi,sure:sure2,puan:puan,Sorular:Sorular,OyunTamSurumu:OyunTamSurumu};
   
-  console.log(AllHistory);
-  console.log(Historyy);
+  console.log("1 : "+AllHistory);
+  console.log("2 : "+Historyy);
 
   AllHistory.push(Historyy);
 
-  console.log(Historyy);
-  console.log(AllHistory);
+  console.log("3 : "+Historyy);
+  console.log("4 : "+AllHistory);
 
   //bunu kaydetmek için bir fonksiyon yazılacak
   localStorage.setItem("AllHistory", AllHistory);
@@ -478,14 +494,14 @@ function HistoryUploudFunction(){
 
   GoToFunction('MegaHistoryBox');
 
-  console.log(localStorage.getItem("AllHistory"));
-
   innerHTML("MegaHistoryBox", `
     <div id="Xbutton" class="history-box">
     <button id="XButton" onclick="GoToFunction('menu')">×</button>
     </div>`);
 
-  if(localStorage.getItem("AllHistory")){
+    console.log(AllHistory);
+
+  if(!AllHistory == []){
 
     console.log("Geçmişinizde hiç oyun yok");
 
@@ -495,11 +511,8 @@ function HistoryUploudFunction(){
     console.log("Geçmişinizde oyun var");
     console.log(localStorage.getItem("AllHistory") + "=" + null);
 
-    let AllHistory2 = localStorage.getItem("AllHistory");
-    AllHistory = AllHistory2;
     console.log(AllHistory2);
     console.log(AllHistory);
-  }
 
   for (let i = 0; i < AllHistory.length; i++) {
     console.log("AAAAAAAAAAAAAAAA");
@@ -555,6 +568,7 @@ function HistoryUploudFunction(){
     innerHTML("MegaHistoryBox", document.getElementById("MegaHistoryBox").innerHTML + paragraflar2);
     }
   }
+}
 }
 
 
