@@ -6,10 +6,13 @@ html {
   
   body{
     color: white;
-    font-size : 20px;
     background-color: #190927;
     text-align: center;
     font-family: Monospace;
+  }
+
+  p{
+    font-size: 20px;
   }
   
   h1{
@@ -39,18 +42,76 @@ html {
   }
   
   .history-box{
-    transform: translate(3%, 0); /* Gerçek bir merkezleme */
+    transform: translate(5%, 0); /* Gerçek bir merkezleme */
     
     margin-top: 15px;
     border-radius: 20px;
-    background-color: red;
+    background-color: #156545;
     font-family: Monospace;
     width: 90%;
     padding: 1px;
-    box-shadow: 0 10px 0px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
-    
+    padding-bottom: 10px;
+    box-shadow: 5px 10px 0px 0 rgb(0, 75, 23), 0 6px 20px 0 rgba(0, 0, 0, 1);
+  }
+
+  .history-boxP{
+    background-color: #068e58;
+    font-size: 20px;
+    border-radius: 20px;
+    line-height: 1;
+    font-family: Monospace;
+    display: inline-block;
+    margin: 10px;
+    padding: 6px 10px;
+    box-shadow: 2px 5px 5px 0 rgb(0, 56, 12);
+    transition: background-color 0.2s, padding 0.2s;
+  }
+
+  .history-boxP:hover{
+    background-color: #06af6b;
+    padding: 8px 15px;
   }
   
+  .history-boxS{
+    background-color: #156545;
+    border-radius: 20px;
+    display: inline-block;
+    font-family: Monospace;
+    padding: 6px 7px;
+    box-shadow: 0 6px 10px 0 rgb(4, 59, 0);
+    transition: background-color 0.2s, padding 0.2s;
+  }
+  .history-boxS:hover{
+    border: 2px solid #d0d0d0;
+    padding: 7px 8px;
+  }
+
+  .butons{
+    background-color: #003821 !important;
+    box-shadow: 2px 4px 0px 0 rgb(0, 0, 0) !important;
+  }
+  
+  .Ayrintilar{
+    background-color: #068e58;
+    font-size: 20px;
+    border-radius: 20px;
+    line-height: 1;
+    font-family: Monospace;
+    margin: 10px;
+    padding: 6px 10px;
+    box-shadow: 2px 5px 5px 0 rgb(0, 56, 12);
+    transition: background-color 0.2s, padding 0.2s;
+    display: flex;
+  }
+  
+  .AyrintilarMini{
+    flex: 1;
+    background-color: #005f37;
+    border: 1px solid #003821;
+    width: 100%;
+    box-shadow: 2px 4px 0px 0 rgb(0, 0, 0) !important;
+  }
+
   .true{
     background-color: #3e6941 !important;
   }
@@ -170,6 +231,38 @@ html {
     border: 0;
     border-radius: 10px;
     font-size: 40px;
+  }
+
+  #Xbutton{
+    height: auto;
+    position: sticky;
+    background-color: rgba(0, 0, 0, 0.336);
+    margin : 0;
+    padding: 0px;
+    transform: translate(0%, 0);
+    width: 100%;
+    box-shadow: 0 0px 0px;
+    border-radius: 0;
+    z-index: 9999;
+    padding: 1px;
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  #XButton{
+    margin-right: 10px;
+    cursor: pointer;
+    background-color:rgba(0, 0, 0, 0);
+    color: #333333;
+    border:0;
+    border-radius: 3px;
+    font-size: 40px;
+    transition: color 0.2s, font-size 0.2s;
+  }
+
+  #XButton:hover{
+    color: #525252;
+    font-size: 42px;
   }
   
   
