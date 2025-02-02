@@ -557,7 +557,7 @@ function HistoryUploudFunction(){
           ).join("")}
           </ul>
             </div>
-            <div class="AyrintilarMini radius" style="background-color: #156545;">
+            <div class="AyrintilarMini2 radius" style="background-color: #156545;">
               <p class="history-boxP" style="background-color: #015e1a; font-size: 30px;"><b>Puanlar</b></p>
               <br>
               <p class="history-boxP">Doğru sayısı: <span class="history-boxS Z1">${Historyy.dogruSayisi}</span></p>
