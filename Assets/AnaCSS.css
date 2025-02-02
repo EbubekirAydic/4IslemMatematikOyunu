@@ -118,6 +118,7 @@ html {
   }
   .AyrintilarMini2{
     flex: 1;
+    flex-basis: 25%;
     background-color: #005f37;
     border: 1px solid #003821;
     width: 100%;

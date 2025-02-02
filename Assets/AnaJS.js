@@ -1,3 +1,5 @@
+  
+  const db = firebase.firestore();
   //Oyun sürümü
   let OyunTamSurumu = "1.2.0";
   let OyunSurumuBasamak1 = 1;//Oyun tam çıkmışsa 1 yapılacak
@@ -145,6 +147,10 @@ function ApplySettings() {
 
   if (secilenIslemler.length === 0) {
     innerHTML('Uyar',"En az bir işlem seçmelisiniz.");
+
+    setTimeout(function () {
+      innerHTML('Uyar',"");
+    }, 2000);
     return;
   }
 
@@ -539,6 +545,7 @@ function HistoryUploudFunction(){
             <div class="AyrintilarMini radius" style="background-color: #2f0038; padding: 10px;">
               
           <p class="history-boxP" style="background-color: #6f0358; font-size: 30px;"><b>Soru geçmişi</b></p>
+          <br>
           <p class="history-boxP" style="background-color: #560143;">Ekstra = sorunun işlemine(+,-,×,÷) göre ekstra puan</p>
           <ul id="SoruGecmisiUl" class="radius">
 
