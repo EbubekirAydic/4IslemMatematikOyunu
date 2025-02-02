@@ -97,6 +97,7 @@ html {
     border-radius: 20px;
     line-height: 1;
     font-family: Monospace;
+    flex-wrap: wrap; /* Taşan elemanlar alta geçsin */
     margin: 10px;
     padding: 6px 10px;
     box-shadow: 2px 5px 5px 0 rgb(0, 56, 12);

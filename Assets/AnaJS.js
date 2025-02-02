@@ -1,8 +1,8 @@
   //Oyun sürümü
   let OyunTamSurumu = "1.2.0";
-  let OyunSurumuBasamak1 = 0;//Oyun tam çıkmışsa 1 yapılacak
-  let OyunSurumuBasamak2 = 3;//Oyunun büyük güncellemelerinde 1 arttırılacak
-  let OyunSurumuBasamak3 = 2;//Oyunun küçük güncellemelerinde 1 arttırılacak
+  let OyunSurumuBasamak1 = 1;//Oyun tam çıkmışsa 1 yapılacak
+  let OyunSurumuBasamak2 = 0;//Oyunun büyük güncellemelerinde 1 arttırılacak
+  let OyunSurumuBasamak3 = 1;//Oyunun küçük güncellemelerinde 1 arttırılacak
 
   //Soru değişkenleri
   let Number1;
@@ -44,7 +44,15 @@
 
   //Tüm geçmişi al
   if (localStorage.getItem("AllHistory")) {
-    AllHistory = localStorage.getItem("AllHistory");
+    //Siteye girdiğinde geçmişi alsın
+
+    AllHistory = JSON.parse(localStorage.getItem("AllHistory"));
+
+    console.log("Hata nerede var2");
+    console.log(AllHistory);
+  }else{
+    console.log("Hata nerede var");
+    console.log(AllHistory);
   }
   
 //Tanımlanması gereken fonksiyonlar
@@ -79,17 +87,19 @@ function resetle(){
 //Menüye gitme fonksiyonu
 function GoToFunction(Open){
 
-  
   setTimeout(function () {
     const elements = document.getElementsByClassName("Menus");
 
     // Döngüyle elemanlara erişme
     for (let i = 0; i < elements.length; i++) {
-      console.log(document.getElementById(elements));
-      elements[i].classList.add("close");
+        elements[i].classList.add("close");
+
     }
+
     document.getElementById(Open).classList.remove("close");
+
   }, 100);
+
   
 }
 
@@ -481,8 +491,7 @@ function HistoryFunction(){
   AllHistory.push(Historyy);
 
   //bunu kaydetmek için bir fonksiyon yazılacak
-  localStorage.setItem("AllHistory", AllHistory);
-  
+  localStorage.setItem("AllHistory", JSON.stringify(AllHistory));
 }
 
 function PuanHesap(Dogru,Yanlis,zorluk,sure) {
