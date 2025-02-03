@@ -1,5 +1,3 @@
-  
-  const db = firebase.firestore();
   //Oyun sürümü
   let OyunTamSurumu = "1.2.0";
   let OyunSurumuBasamak1 = 1;//Oyun tam çıkmışsa 1 yapılacak
