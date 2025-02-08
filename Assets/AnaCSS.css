@@ -42,7 +42,7 @@ html {
   }
   
   .history-box{
-    transform: translate(5%, 0); /* Gerçek bir merkezleme */
+    transform: translate(2%, 0); /* Gerçek bir merkezleme */
     
     margin-top: 15px;
     border-radius: 20px;
@@ -132,6 +132,10 @@ html {
 
   .false{
     background-color: #a83232 !important;
+  }
+
+  .Truse{
+    background-color: #747474 !important;
   }
 
   #SoruGecmisiLi{

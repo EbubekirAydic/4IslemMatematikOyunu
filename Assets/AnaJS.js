@@ -1,5 +1,3 @@
-  
-  const db = firebase.firestore();
   //Oyun sürümü
   let OyunTamSurumu = "1.2.0";
   let OyunSurumuBasamak1 = 1;//Oyun tam çıkmışsa 1 yapılacak
@@ -49,12 +47,6 @@
     //Siteye girdiğinde geçmişi alsın
 
     AllHistory = JSON.parse(localStorage.getItem("AllHistory"));
-
-    console.log("Hata nerede var2");
-    console.log(AllHistory);
-  }else{
-    console.log("Hata nerede var");
-    console.log(AllHistory);
   }
   
 //Tanımlanması gereken fonksiyonlar
@@ -188,6 +180,9 @@ function StartGame() {
     innerHTML("Sure", "Kalan Süre: " + sure + " saniye");
 
     if (sure <= 0) {
+
+      Sorular.push(Soru);
+      
       EndGame();
     }
   }, 1000);
@@ -425,8 +420,8 @@ function EndGame() {
               (soru) => 
               `<li id="SoruGecmisiLi" class="radius">
               <div id="SoruGecmisiSoru" class="radius">${soru.Number1} ${soru.islem} ${soru.Number2} = ${soru.cevap}</div>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap}</div></span>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap === soru.cevap ? "+" + soru.islempaun : "+0"}</div></span>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : soru.verilenCevap == "?" ? "Truse" : "false"} radius">${soru.verilenCevap}</div></span>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : soru.verilenCevap == "?" ? "Truse" : "false"} radius">${soru.verilenCevap === soru.cevap ? "+" + soru.islempaun : "+0"}</div></span>
 
               </li>`
           ).join("")}
@@ -514,23 +509,16 @@ function HistoryUploudFunction(){
     <button id="XButton" onclick="GoToFunction('menu')">×</button>
     </div>`);
 
-    console.log(AllHistory);
-
     // AllHistory boş mu değil mi kontrolü
   if(AllHistory.length === 0){
-
-    console.log("Geçmişinizde hiç oyun yok");
 
     innerHTML("MegaHistoryBox", document.getElementById("MegaHistoryBox").innerHTML + "<p style='color : rgba(255, 255, 255, 0.42)'>Geçmişinizde hiç oyun yok</p>");
 
   }else{
-    console.log("Geçmişinizde oyun var");
 
   for (let i = 0; i < AllHistory.length; i++) {
 
     if (AllHistory.length !== 0) {
-
-      console.log(AllHistory.length);
 
   Historyy = AllHistory[i];
 
@@ -557,8 +545,8 @@ function HistoryUploudFunction(){
               (soru) => 
               `<li id="SoruGecmisiLi" class="radius">
               <div id="SoruGecmisiSoru" class="radius">${soru.Number1} ${soru.islem} ${soru.Number2} = ${soru.cevap}</div>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap}</div></span>
-              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : "false"} radius">${soru.verilenCevap === soru.cevap ? "+" + soru.islempaun : "+0"}</div></span>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : soru.verilenCevap == "?" ? "Truse" : "false"} radius">${soru.verilenCevap}</div></span>
+              <div id="SoruGecmisiCevap" class="radius"><span id="SoruGecmisiCevap2" class="${soru.verilenCevap === soru.cevap ? "true" : soru.verilenCevap == "?" ? "Truse" : "false"} radius">${soru.verilenCevap === soru.cevap ? "+" + soru.islempaun : "+0"}</div></span>
 
               </li>`
           ).join("")}
