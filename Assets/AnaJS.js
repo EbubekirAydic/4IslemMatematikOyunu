@@ -108,6 +108,8 @@ function ToggleOperation(Element,ClassNName) {
 }
 
 function ApplySettings() {
+  innerHTML('Uyar',"Bu kod çalışıyor");
+  
   // Süre ayarını al
   let sureInput = document.getElementById("sureInput").value;
   sure = parseInt(sureInput);
